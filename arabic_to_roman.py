@@ -14,11 +14,15 @@ def arabic2roman(num):
     if isinstance(num, int):
         res = ''
         i = 12
+        if num < 0 or num > 3999:
+            return "Error: Number overflow"
         while num > 0:
             while num//arabic[i] > 0:
                 res = res + roman[i]
                 num = num - arabic[i]
             i-=1
         return res    
-        
+    else:
+        return "Error: Number type error"
     
+
