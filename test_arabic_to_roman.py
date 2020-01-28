@@ -9,6 +9,13 @@ Created on Mon Jan 27 23:32:08 2020
 import arabic_to_roman as test
 import pytest
 
+def test_error():
+    assert test.arabic2roman('abc') == "Error: Number type error"
+    assert test.arabic2roman('numbernumber') == "Error: Number type error"
+    assert test.arabic2roman(4000) == "Error: Number overflow"
+    assert test.arabic2roman(-10) == "Error: Number overflow"
+    assert test.arabic2roman(1.1) == "Error: Number type error"
+
 def test_case():
     assert test.arabic2roman(3) == "III"
     assert test.arabic2roman(1) == "I"
@@ -25,7 +32,8 @@ def test_case():
     assert test.arabic2roman(2013) == "MMXIII"
     assert test.arabic2roman(1975) == "MCMLXXV"
     assert test.arabic2roman(3999) == "MMMCMXCIX"    
-    
+     
     
 if __name__ == "__main__":
-    test_case()   
+    test_case() 
+    test_error()
